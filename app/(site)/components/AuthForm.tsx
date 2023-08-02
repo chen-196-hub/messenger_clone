@@ -7,13 +7,15 @@ import {
   useForm,
 } from 'react-hook-form';
 
-import Input from "@/app/components/inputs/input";
+import Input from "@/app/components/inputs/Input";
+import Button from "@/app/components/Button";
+
 
 type Variant = 'login' | 'register';
 
 const AuthForm = () => {
   const [variant, setVariant] = useState<Variant>("login");
-  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const toggleVariant = useCallback(() => {
@@ -37,7 +39,7 @@ const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLogin(true);
+    setIsLoading(true);
 
     if (variant === "login") {
       // ログイン処理
@@ -49,7 +51,7 @@ const AuthForm = () => {
   };
 
   const socialAction = (action: string) => {
-    setIsLogin(true);
+    setIsLoading(true);
   }
 
   return (
@@ -97,10 +99,44 @@ const AuthForm = () => {
               register={register}
               errors={errors}
               />
-              <div></div>
+            <div>
+              <Button
+                disabled={isLoading}
+                fullWidth
+                type="submit"
+              >
+                {variant === "login" ? "Sign in" : "Register"}
+              </Button>
+            </div>
         </form>
-      </div>
+        <div className='mt-6'>
+            <div className='relative'>
+              <div
+                className='
+                  absolute
+                  inset-0
+                  flex
+                  items-center
+                '
+              >
+                <div className='
+                  w-full
+                  border-t
+                  border-gray-300
+                '/>
+              </div>
+              <div className='relative flex justify-center text-sm'>
+                <span className='bg-white px-2 text-gray-500'>
+                  Or continue with
+                </span>
+              </div>
+            </div>
+            
+            <div className='mt-6 flex gap-2'>
 
+            </div>
+        </div>
+      </div>
     </div>
   );
 }
