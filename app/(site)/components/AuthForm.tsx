@@ -6,7 +6,7 @@ import {
   SubmitHandler,
   useForm,
 } from 'react-hook-form';
-import {BsGithub, BsGoogle, BSGoogle} from 'react-icons/bs';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 import Input from "@/app/components/inputs/Input";
 import Button from "@/app/components/Button";
@@ -85,6 +85,7 @@ const AuthForm = () => {
               label='Name'
               register={register}
               errors={errors}
+              disabled={isLoading}
               />
           )}
             <Input 
@@ -93,6 +94,7 @@ const AuthForm = () => {
               type='email'
               register={register}
               errors={errors}
+              disabled={isLoading}
               />
             <Input 
               id="password"
@@ -100,6 +102,7 @@ const AuthForm = () => {
               type='password'
               register={register}
               errors={errors}
+              disabled={isLoading}
               />
             <div>
               <Button
