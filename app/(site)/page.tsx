@@ -21,7 +21,7 @@ export default function Home() {
           width="48"
           className='mx-auto w-auto'
           src="/images/logo.png"
-        ></Image>
+        />
         <h2
           className="
             mt-6
