@@ -1,50 +1,42 @@
+'use client'
 
-'use client';
+import clsx from 'clsx'
 
-import clsx from "clsx";
-
-import { FieldValues, FieldErrors, SubmitHandler } from "react-hook-form";
+import { FieldValues, FieldErrors, SubmitHandler } from 'react-hook-form'
 
 interface InputProps {
-  label: string;
-  id: string;
-  type?: string;
-  required?: boolean;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
-  disabled?: boolean;
+  label: string
+  id: string
+  type?: string
+  required?: boolean
+  register: UseFormRegister<FieldValues>
+  errors: FieldErrors
+  disabled?: boolean
 }
 
-const Input: React.FC<InputProps> = ({
-  label,
-  id,
-  type,
-  required,
-  register,
-  errors,
-  disabled,
-}) => {
+const Input: React.FC<InputProps> = ({ label, id, type, required, register, errors, disabled }) => {
   return (
     <div>
-      <label 
-        className="
+      <label
+        className='
           block
           text-sm
           font-medium
           leading-6
-          text-gray-700"
+          text-gray-700'
         htmlFor={id}
-        >
+      >
         {label}
       </label>
-      <div className="mt-2">
+      <div className='mt-2'>
         <input
           id={id}
           type={type}
           autoComplete={id}
           disabled={disabled}
           {...register(id, { required })}
-          className={clsx(`
+          className={clsx(
+            `
             form-input
             block
             w-full
@@ -62,14 +54,13 @@ const Input: React.FC<InputProps> = ({
             focus:ring-sky-600
             sm:text-sm
             sm:leading-6`,
-            errors[id] && "focus:ring-red-500",
-            disabled && "opacity-50 cursor-default"
-            )}
-          />
+            errors[id] && 'focus:ring-red-500',
+            disabled && 'opacity-50 cursor-default',
+          )}
+        />
       </div>
     </div>
-  );
+  )
 }
 
-
-export default Input;
+export default Input
