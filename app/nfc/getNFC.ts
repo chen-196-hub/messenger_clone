@@ -28,6 +28,7 @@ declare interface NavigatorUSB {
 }
 
 declare interface Navigator extends NavigatorUSB {}
+declare const navigator: Navigator;
 
 type DeviceModelList = Record<number, number>;
 
@@ -37,6 +38,7 @@ type EndpointNumbers = {
   out: number;
 };
 
+// 以下コード
 
 async function sleep(msec: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, msec));
