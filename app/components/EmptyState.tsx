@@ -2,10 +2,19 @@
 
 import Button from "./Button"
 import getNFC from "../nfc/getNFC"
+import { useState } from "react"
 
 
  const EmptyState = () => {
+  const [ idm, setIdm ] = useState<string | undefined>("")
 
+  const getCardId = async () => {
+    setIdm("")
+    const res: { type?:string, idm?: string } | undefined = await getNFC()
+    console.log(res)
+    setIdm(res.idm)
+    console.log(idm)
+  }
 
   return (
     <div
@@ -32,7 +41,13 @@ import getNFC from "../nfc/getNFC"
         >
           Select a chat or start a new conversation
         </h3>
-        <Button onClick={ getNFC }>
+
+        <h3>
+          { idm }
+        </h3>
+
+
+        <Button onClick={ getCardId }>
             nfc
         </Button>
       </div>
