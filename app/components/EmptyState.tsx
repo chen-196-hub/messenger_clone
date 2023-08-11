@@ -1,4 +1,12 @@
+"use client"
+
+import Button from "./Button"
+import getNFC from "../nfc/getNFC"
+
+
  const EmptyState = () => {
+
+
   return (
     <div
       className="
@@ -24,6 +32,9 @@
         >
           Select a chat or start a new conversation
         </h3>
+        <Button onClick={ getNFC }>
+            nfc
+        </Button>
       </div>
     </div>
   )
