@@ -1,3 +1,8 @@
+interface USBInTransferResult {
+  data: DataView;
+  status: string;
+}
+
 declare interface USBDevice {
   open(): Promise<void>;
   selectConfiguration(configurationValue: number): Promise<void>;
